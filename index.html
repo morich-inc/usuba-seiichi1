@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>薄葉成一 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>薄葉成一 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社Hacobu</a>
+  <a href="#k2">2. 株式会社いつも</a>
+  <a href="#k3">3. 株式会社Morght</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業企画・BizDev・PMM</span><span class="badge badge-blue">IPO準備中</span></div>
+  <div class="co-name">株式会社Hacobu</div>
+  <div class="co-url"><a href="https://hacobu.jp" target="_blank">https://hacobu.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区三田３丁目１４番１０号 三田3丁目MTビル　9階</td></tr><tr><th>平均年齢</th><td>36.5歳</td></tr><tr><th>上場区分</th><td>IPO準備中</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>物流DXスタートアップでマルチプロダクト戦略により複数プロダクトでシェアを獲得</li><li>「MOVO Berth」はバース管理システム市場で6年連続シェアNo.1、全国3万7,000拠点超へ導入</li><li>累計資金調達額56億円、登録ドライバー数80万人超の巨大な物流データ基盤を保有</li><li>組織がフラットで皆様下の名前やあだなで呼び合う大人ベンチャー</li><li>フレックスタイム制（コアタイム11:00～16:00）でワークライフバランス良好</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「運ぶを最適化する」をミッションに掲げ、物流業界の構造課題解決に挑む物流DXスタートアップ。企業間物流を最適化するクラウド物流管理ソリューション「MOVO」を中心に、物流DXコンサルティングやシステムインテグレーション、人材支援までを一気通貫で展開。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「運ぶを最適化する」をミッションに掲げ、物流業界の構造課題解決に挑む物流DXスタートアップ。企業間物流を最適化するクラウド物流管理ソリューション「MOVO」を中心に、物流DXコンサルティングやシステムインテグレーション、人材支援までを一気通貫で展開。</p><p>主力サービス「MOVO Berth」は、バース管理システム市場で6年連続シェアNo.1を獲得し、全国3万7,000拠点超へ導入。国内主要物流拠点の約30％をカバーする業界標準インフラとして成長中です。登録ドライバー数80万人超、月間トランザクション数300万件超という巨大な物流データ基盤を保有し、共同輸配送や積載効率向上など、業界横断での物流最適化を推進。</p><p>累計資金調達額は56億円に到達し、物流危機という社会課題に対し、SaaS・データ・コンサルティングを融合した事業を展開。さらに、大和ハウス工業、日野自動車、三菱倉庫など大手企業との資本提携も推進し、物流業界全体を巻き込んだ変革を牽引する中核企業として成長を続けています。</p><p><strong>代表取締役社長CEO　佐々木太郎氏</strong><br>慶應義塾大学法学部卒業後、UCLA MBA取得。アクセンチュア、博報堂コンサルティング、ブーズアンドカンパニーを経て、グロッシーボックスジャパンを創業し9ヶ月で単月黒字化を達成。その後、食のキュレーションEC「FRESCA」を創業。物流業界の現状を目の当たりにしたことで物流変革への強い使命感を抱き、2015年にHacobuを創業しました。3度の起業経験を持つシリアルアントレプレナーでありながら、4人の子どもを育てる父親として働き方改革にも熱心に取り組む、情熱と実行力を兼ね備えたリーダーです。</p><p>平均年齢36.5歳、社長も4人の子供がおり、子育てメンバーの多い大人ベンチャーです。組織はとてもフラットで、皆様下の名前やあだなで呼び合うとのこと・・物流DXスタートアップは複数ございますが、同社はマルチプロダクト戦略で複数プロダクトを有し、シェアを獲得している点が強みです。マネタイズは荷主・発注者向けとなるため、エンタープライズ向けセールスに舵を切って拡販を進めておられます。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【オープンポジション／幹部候補】事業企画・BizDev・PMM（CPO室・新規事業等）</div>
+          <div class="job-preview">物流インフラの構造改革を牽引する事業戦略立案から実行まで、将来の経営幹部候補ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■ 募集背景</strong></p><p>物流インフラの構造改革を牽引する当社は、主力事業であるSaaS「MOVO」シリーズが累計利用拠点数3.8万超、登録ドライバー数80万人を超える国内最大級の物流プラットフォームへと成長しました。各産業のトップ企業を先回りして押さえる「オセロの角戦略」や、複数プロダクトを展開して課題を網羅的に解決する「マルチプロダクト戦略」にて事業を発展させて参りました。</p><p>「2024年問題」や法改正により物流が社会アジェンダ化する中、SaaS単体では越えられない「商流と物流の接続」といった壁を打破するため、コンサルティングやシステムインテグレーション（SI）部門を立ち上げるなど、産業構造そのものを変革するフェーズに入っています。</p><p>事業の複雑性がさらに増す中、経営陣・事業本部直下で、非連続な事業成長を実現するための戦略立案や新規事業の企画を牽引し、将来の経営幹部候補となる方を「オープンポジション」として幅広く募集します。</p><p><strong>■ 募集ポジションと概要</strong></p><p><strong>CPO室（役員直下）</strong><br>CPOの右腕として、主力SaaS事業全体の事業戦略や中期経営計画の策定から実行までを牽引します。部門横断のハブとして立ち回り、事業ロードマップの策定、KPI設計、予実管理、セールスおよびマーケティング戦略の再構築といった、全社横断的な事業企画を担います。</p><p><strong>PMM（事業本部直下）</strong><br>経営陣の目標と連動した事業戦略・Go-to-Market戦略の立案をリードします。KPI設計や予実管理だけでなく、「何に投資すれば売上が作れるか」を見極め、人員や予算といったリソース配分まで踏み込んだ提案を行う、事業責任者に近いポジションです。</p><p><strong>BizOps（事業本部直下）</strong><br>AIとデータを駆使してデータドリブン経営を推進する戦略企画を担います。データ分析やTableauを用いたKPIの可視化を行い、経営会議や各部長陣と連携しながら、事業戦略に直結する意思決定の支援と業務プロセスの再構築を行います。</p><p><strong>新規事業開発（役員直下）</strong><br>当社の強固な顧客・データ基盤を武器に、P/L責任を見据えたゼロイチの事業創造・戦略設計を牽引します。市場調査や分析にとどまらず、収支・数値モデリング、ロードマップ作成など、高い抽象度の経営課題を具体的な事業計画へと落とし込みます。</p><p>面接の中で、ご経験やご志向に応じてふさわしい部署、役割を検討させていただき、ご経験によってはマネージャー候補としてジョインいただく可能性もございます。</p><p><strong>■ スキル・経験</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>戦略コンサルティングファーム、または総合コンサルティングファームでの実務経験（3年以上目安）</li><li>事業会社での経営企画、事業企画、事業推進、またはCEO/CXO室での実務経験</li><li>IT/SaaS企業での事業責任者、またはプロダクトマネージャー（PdM/PMM）としての経験</li><li>もしくは上記職務内容に親和性の高い業務に携わったご経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>複数プロダクトの管掌経験、または新規事業の立ち上げ経験。</li><li>不確実性が高い状況下で、自ら仮説を立てて意思決定を行える方。</li><li>HacobuのMission・Vision・Valueに共感できる方</li><li>手段の実行ではなく、目的（What/Why）から逆算して動ける方</li></ul><p><strong>■ 年収</strong><br>700−1200万円</p>
+        <div class="meta-pills"><span class="pill">📍 東京都港区三田</span><span class="pill">🏠 リモートワーク</span><span class="pill">⏰ フレックスタイム制</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://hacobu.jp" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://hacobu.jp/news/5949/" target="_blank">📋 コーポレート・アイデンティティ</a><a class="lbtn lbtn-out" href="https://note.hacobu.jp/" target="_blank">📝 note記事</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">地域共創プロデューサー</span><span class="badge badge-blue">東証グロース上場</span></div>
+  <div class="co-name">株式会社いつも</div>
+  <div class="co-url"><a href="https://itsumo365.co.jp" target="_blank">https://itsumo365.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区有楽町一丁目13番2号　第一生命日比谷ファースト21階</td></tr><tr><th>平均年齢</th><td>30代前半</td></tr><tr><th>上場区分</th><td>東証グロース市場</td></tr><tr><th>支援実績</th><td>延べ13,000件以上のメーカー</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>「日本の未来をECでつくる」をミッションに延べ13,000件以上のメーカーへのEC事業の総合支援実績</li><li>Amazon・電通・楽天出身メンバーが加わり経営立て直し体制を強化</li><li>働くパパママ応援制度や産休育休制度でワークライフバランス良好</li><li>経営に近い立ち位置で仕事ができる組織再編フェーズ</li><li>時短・在宅勤務可能で残業管理も厳しく、メリハリのある働き方</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「日本の未来をECでつくる」をミッションに掲げ、日本の中小から大手に至るまで延べ13,000件以上の幅広いメーカーへのEC事業の総合支援を行う会社です。メーカーのECパートナーとして、EC戦略の立案、サイト構築、販売戦略、マーケティング、物流、システムなどの包括的なサポートを提供。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「日本の未来をECでつくる」をミッションに掲げ、日本の中小から大手に至るまで延べ13,000件以上の幅広いメーカーへのEC事業の総合支援を行う会社です。メーカーのECパートナーとして、EC戦略の立案、サイト構築、販売戦略、マーケティング、物流、システムなどの包括的なサポートを提供することで、クライアントのEC事業の成功を支援しています。</p><p>また、「人」と「テクノロジー」を組み合わせ、ブランドECサイト、Amazon、楽天市場、Yahoo!ショッピング、海外のECプラットフォームでのマルチチャネル展開を支援しています。卓越した「Eコマースで売るチカラ」で人を活かし、日本ブランドを世界に届けるお手伝いをしています。</p><p>2016年にEC事業代行へと事業を拡張し、急成長。2020年に東証マザーズ（現グロース市場）へ上場し、2021年からはD2C・ECブランドのM&A・出資を本格化させてきました。積極的なM&Aと採用を推進する拡大路線を進めていましたが、現在は事業ポートフォリオの整理を進め、売却も含めた見直しを行いながら、持続的な成長戦略の構築に取り組んでいます。</p><p>また、組織再編の中で、Amazon・電通・楽天出身のメンバーが加わり、経営の立て直しに向けた体制を強化。新たな成長フェーズを支える優秀な人材の採用にも注力しています。変化の局面にある今、新たな企業文化を築きながら、より強固な組織を目指しているフェーズです。</p><p><strong>代表取締役社長　坂本 守氏</strong><br>1970年生まれ。滋賀県出身。 1999年に株式会社船井総合研究所（現株式会社船井総研HD）に中途入社。2007年に現取締役副社長の望月氏と共に、中小企業の成長を支援する会社を作りたいと思い同社を設立し、代表取締役に就任。</p><p>Amazon、楽天、PayPayモール、自社ブランドECなどの、サイト構築・UXデザイン・広告運用・プロモーション・物流・越境ECまでをトータル支援しています。30代前半が平均年齢ですが、現在は30代後半～40代のミドルマネジメントを置くなど組織再編を行っており、経営に近い立ち位置で仕事ができることが魅力的なポイントです。時短・在宅勤務ができる【働くパパママ応援制度】や【産休育休制度】という制度があったり残業については厳しく管理されているので、メリハリをつけてワークライフバランス良く働ける環境です！</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 地域共創プロデューサー（PM／事業開発）</div>
+          <div class="job-preview">地方の魅力的な商品をECの力で「売れる状態」に変え、継続できる事業として成立させる戦略から実行まで一気通貫</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■ ミッション：地域の事業を&quot;売れる仕組み&quot;で成長させる</strong></p><p>地方には魅力的な商品や技術がある一方で、販路や売り方が整っていないことで、本来の価値を発揮できていないケースが多くあります。私たちの役割は、それらをECの力で「売れる状態」に変え、単発で終わらない&quot;継続できる事業&quot;として成立させることです。自治体や地域事業者と連携し、商品設計から販路、運用体制までをゼロから構築し、実際に売上が立つ状態まで責任を持って支援します。</p><p><strong>■ 業務内容：戦略立案から実行まで一気通貫で担当</strong></p><p>プロジェクトマネージャー（PM）兼、事業開発ポジションとして以下を担います。</p><p><strong>【事業戦略・企画提案】</strong></p><ul><li>自治体や地域事業者の課題整理</li><li>どの商品をどう売るかの設計</li><li>プロポーザルや提案資料の作成</li></ul><p><strong>【EC事業の立ち上げ・運用】</strong></p><ul><li>商品企画、価格設計、販路選定</li><li>広告や販促施策の実行</li><li>売上データの分析と改善</li></ul><p><strong>【運用体制の構築】</strong></p><ul><li>物流、CS、オペレーション設計</li><li>地域に合わせた現実的な運用体制の構築</li><li>社内外メンバーとの連携</li></ul><p><strong>【プロジェクトマネジメント】</strong></p><ul><li>全体進行管理</li><li>自治体や生産者との折衝</li><li>定期的な現地訪問による関係構築</li></ul><p>※戦略だけでなく、実際に手を動かして事業を成立させるポジションです</p><p><strong>■ この仕事の魅力</strong></p><ul><li>事業を「作って終わり」ではなく「伸ばす」まで担える</li><li>「行政×EC」の希少な経験が積める</li><li>成果が分かりやすい</li><li>裁量を持って事業を推進できる</li><li>成功事例を「型化」し、横展開できる</li></ul><p><strong>■ スキル・経験</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>法人向けの課題解決型業務の経験を有する方（営業・コンサルティング・PMなど）</li><li>高い調整能力（複数のステークホルダーの間に立ち、合意形成してきた経験）。</li><li>地域の課題解決に対し、強い関心と誠実な姿勢をお持ちの方。</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>自治体向けの提案、入札業務、プロポーザルのリード経験。</li><li>EC・D2C業界に関する知識、またはマーケティングや商品企画の実務経験。</li></ul><p><strong>■ 求める人物像</strong></p><p>「自ら課題を見つけ、周囲を巻き込みながら前に進められる方」「多様なステークホルダーの間で合意形成をリードできる方」「データと現場の両方を重視し、実行までやり切れる方」</p><p><strong>■ 年収</strong><br>600万円～950万円</p>
+        <div class="meta-pills"><span class="pill">📍 東京都千代田区有楽町</span><span class="pill">🏠 ハイブリッドワーク</span><span class="pill">👶 働くパパママ応援制度</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://itsumo365.co.jp" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/itsumo365" target="_blank">📋 会社概要資料</a><a class="lbtn lbtn-out" href="https://www.youtube.com/watch?v=79fyrNWhpV8" target="_blank">🎬 Youtube</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">事業戦略マネージャー</span><span class="badge badge-blue">非上場（高収益）</span></div>
+  <div class="co-name">株式会社Morght</div>
+  <div class="co-url"><a href="https://nell.life/company" target="_blank">https://nell.life/company</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区南青山3-1-34　3rd MINAMI AOYAMA 6F</td></tr><tr><th>設立</th><td>2018年5月</td></tr><tr><th>従業員数</th><td>約80名規模</td></tr><tr><th>売上規模</th><td>売上30億円、利益7億円（4期目）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>寝返りに特化した『NELLマットレス』で急成長、EC市場でシモンズを超える実績</li><li>財務基盤が安定しキャッシュリッチで外部資金調達に頼らず新規事業投資可能</li><li>南青山のオシャレなショールーム兼オフィスで働き方の自由度が高い</li><li>120日間のフリートライアルなど睡眠体験全体の改善に取り組む</li><li>フレックスタイム制、副業可、ハイブリッド勤務で自由度の高い働き方</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「あなたがあなたらしく生きるための、最高の準備を届けつづける」をミッションに掲げる、ライフスタイル領域のものづくり企業です。各事業を通じて、日常の中に"最高の準備"を溶け込ませることで、「健康が自動化される世界」の実現を目指しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「あなたがあなたらしく生きるための、最高の準備を届けつづける」をミッションに掲げる、ライフスタイル領域のものづくり企業です。各事業を通じて、日常の中に"最高の準備"を溶け込ませることで、「健康が自動化される世界」の実現を目指しています。</p><p>現在は、睡眠ブランド「NELL」、休息ブランド「YURUMARU」を展開し、生活の質（QOL）向上につながるプロダクトを提供。主力事業である睡眠ブランド「NELL」では、寝心地を徹底的に追求したプロダクト開発に加え、120日間のフリートライアル、中間コストの削減、コンパクト配送など製品単体にとどまらない"睡眠体験全体"の改善に取り組んでいます。</p><p>インフルエンサーマーケティングを軸に、Z世代・ミレニアル世代を中心とした顧客層へ、オンライン専業で販売を展開し、2021年2月には単月売上1億円を突破し、4期目には売上30億円、利益7億円規模へと成長しています。また、国内ホテルへの導入も進んでおり、2025年8月時点で110施設・3,000台超の導入実績を有しています。</p><p>今後は、「ものづくりを通じたQOL向上」と「健康のトータルサポート」を軸に、マルチブランド戦略をさらに強化し、より多様なライフスタイルに寄り添う事業展開を進めていく方針です。2021年4月には、ANOBAKA、TLM、及び個人投資家等から総額1億円超の資金調達を実施していますが、現在は外部からの資金調達に頼らずとも新規事業への投資が可能な財務基盤を築いています。</p><p><strong>代表取締役 土井 皓貴氏</strong><br>1997年生まれ、東京都出身。高校在学中にスタンフォード大学に短期留学し、シリコンバレーのスタートアップ文化に影響を受け、起業を決意。大学へは進学せず、高校3年時の2015年に株式会社Branding Engineerへ入社。イベント事業部の立ち上げや新卒採用に従事し、入社当時5名だった組織を80名規模へ拡大するまでの一翼を担う。2018年5月、株式会社Morghtを創業し、アプリ開発や新卒採用支援サービスを展開。2020年10月、D2C寝具ブランド「NELL」を立ち上げる。</p><p>寝返りに特化した『NELLマットレス』で急成長のスタートアップです。財務基盤が安定しておりかなりキャッシュリッチです。僅か数年で創業100年の国内ベッドメーカーの売上を超え、EC市場ではシモンズを超えておられます。人々の活動の源である睡眠の質という課題を解決し、日本の未来を良くしていこうとしています。南青山のオフィスはショールームも兼ねており、オシャレな雰囲気です。働き方の自由度が高い点も、非常にオススメです！</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 B_事業戦略／マネージャー</div>
+          <div class="job-preview">「NELL」と「YURUMARU」ブランドを含む国内事業部の事業戦略担当として、戦略立案から実行まで牽引</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■ Morghtの中核事業の戦略立案と各種施策の推進</strong></p><p>「NELL」と「YURUMARU」ブランドを含む国内事業部の事業戦略担当として、事業及び組織課題の抽出から戦略の立案、実行までを牽引していただきます。スタートアップならではのダイナミックな環境の中で、未来のto beを実現するための幅広い施策をリードするポジションです。</p><p><strong>■ 業務詳細</strong></p><ul><li>事業課題、組織課題及び事業機会の特定</li><li>事業戦略の立案及び推進</li><li>数値計画の策定及び予実管理</li><li>マーケットリサーチ</li></ul><p><strong>■ Morghtについて</strong></p><p>Morght（モート）は、「あなたがあなたらしく生きるための、最高の準備を届けつづける。」をミッションに掲げ、ライフスタイルブランドを展開する"ものづくりの会社"です。私たちは各事業を通じて、最高の準備を日常に溶け込ませ、"健康が自動化される世界" の実現を目指しています。</p><p>現在は、睡眠ブランド「NELL」、休息ブランド「YURUMARU」を展開し、生活の質を高めるプロダクトを提供しています。主力事業である睡眠ブランド「NELL」では、寝心地を徹底追求したプロダクト開発に加え、120日間のフリートライアル、中間コストの削減、コンパクト配送など、睡眠体験そのものの改善に取り組んできました。今後は「ものづくりを通じたQOL向上」と「健康のトータルサポート」をさらに推進すべく、マルチブランド戦略を強化していきます。</p><p><strong>■ 働く人々、働く環境</strong></p><p>広告代理店・コンサルティングファーム・ITベンチャーなどものづくりではない異業種のメンバーが多数在籍しています。できるだけルールは設けていないため、パフォーマンスを発揮しやすい最適な環境を個々人が考えて働けます。（ハイブリッド型ワークスタイル、フレックスタイム制、副業可）</p><p><strong>■ 今Morghtに入るメリット</strong></p><ul><li><strong>①事業拡大フェーズのど真ん中</strong><br>睡眠ブランドNELLの拡大・海外事業推進・新規ブランド立ち上げなど、どれも経営インパクトのある大きなチャレンジがたくさん転がっています。</li><li><strong>②様々な業界から集まったプロ人材が集まる組織</strong><br>多種多様な業界で活躍してきたプロ人材が集まるため、高いレベルの中で自分の実力を試したり、さらなる自己成長をしていくための環境が備わっています。</li><li><strong>③少数組織だからこそ自らカルチャーを作れる</strong><br>プロ人材が働きやすくて最大限のパフォーマンスを発揮できるためのカルチャーは何かと、社員みんなで考えながらカルチャーを形成していくことができます。</li></ul><p><strong>■ スキル・経験</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>戦略コンサルティングファームにおけるコンサルタントの経験</li><li>事業会社での事業企画、経営企画もしくはこれらに相当する部署での経験</li><li>経営層との折衝経験、あるいはご自身で会社を経営されていた方</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>D2C / EC事業の経験</li><li>M&A及びPMIの実行経験</li><li>スタートアップ環境でのご経験</li></ul><p><strong>■ 年収</strong><br>1020万円～</p>
+        <div class="meta-pills"><span class="pill">📍 東京都港区南青山</span><span class="pill">🏠 リモート勤務可</span><span class="pill">✅ 副業可</span><span class="pill">⏰ フレックスタイム制</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://nell.life/company" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/morght/morght-hui-she-shao-jie-zi-liao-recruiting-last-updated-2024-dot-07" target="_blank">📋 会社紹介資料</a><a class="lbtn lbtn-out" href="https://morght.com/career" target="_blank">👥 働く人々のインタビュー</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが薄葉成一 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
